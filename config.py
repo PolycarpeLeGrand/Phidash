@@ -1,6 +1,9 @@
 from pathlib import Path
 
 
+# Data paths
+
+
 # Ip details when test server is run on public mode
 PORT = 33
 DEVICE_IP = '192.168.0.129'

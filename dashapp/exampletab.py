@@ -7,7 +7,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
-from tools.factories import build_jumbotron
+from tools.factories import jumbotron_from_title_paragraphs
 
 
 TAB_ID = 'example-tab'
@@ -24,7 +24,7 @@ title = 'Title to show on the jumbotron'
 paras = ['This is the first paragraph shown on the jumbotron.',
          'And this one is the second paragraph.',
          'We can even add a third one if we\'re feeling wild!']
-ex_jumbotron = build_jumbotron(title, paras, className='pt-2 pb-2')
+ex_jumbotron = jumbotron_from_title_paragraphs(title, paras, className='pt-2 pb-2')
 
 
 # Most content will be held in cars, that can be defined here or imported

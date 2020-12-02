@@ -7,13 +7,13 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
-from tools.factories import build_jumbotron
+from tools.factories import jumbotron_from_title_paragraphs
 from data.markdowns import CONTRIBUTORS_MARKDOWN_TEXT, PROJECT_DETAILS_MARKDOWN
 
 
 j_title = 'Project name'
 j_text = ['Quick project description text']
-about_jumbotron = build_jumbotron(j_title, j_text)
+about_jumbotron = jumbotron_from_title_paragraphs(j_title, j_text)
 
 project_card = dbc.Card([
     dbc.CardHeader('Project details or something', className='lead'),
