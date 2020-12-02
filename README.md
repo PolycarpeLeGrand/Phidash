@@ -1,3 +1,7 @@
 # Phidash
 
-Allo!
+Template project for Dashboards
+
+
+
+
