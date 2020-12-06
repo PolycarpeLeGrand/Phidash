@@ -5,7 +5,7 @@ from dash.dependencies import Input, Output, State
 
 from dashapp import app, DATA
 from dashapp.header import header
-from dashapp.exampletab import example_tab
+from dashapp.exampletab.exampletab import example_tab
 from dashapp.abouttab import about_tab
 
 
@@ -19,6 +19,7 @@ TABS = [
 ]
 
 
+# Builds tabs from TABS. Don't touch.
 tabs = dbc.Tabs(
     [dbc.Tab(label=tab['label'], label_style={'cursor': 'pointer'}) for tab in TABS],
     id='tabs', active_tab='tab-0', style={'padding-left': '10px', }
@@ -32,7 +33,6 @@ layout = html.Div([
         tabs,
     ], className='pt-2 bg-dark text-light'),
     dbc.Container([], id='tab-container', fluid=True, className='bt-2 pt-3'),
-
 ])
 
 

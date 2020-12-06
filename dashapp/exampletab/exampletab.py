@@ -28,6 +28,7 @@ ex_jumbotron = jumbotron_from_title_paragraphs(title, paras, className='pt-2 pb-
 
 
 # Most content will be held in cars, that can be defined here or imported
+# If cards are self contained, it's nicer to split them in individual files
 card_md = '#### Big card text  \nFollowed by smaller card text, which is all in a markdown component.'
 ex_card_1 = dbc.Card([
     dbc.CardHeader('First card header and stuff', className='lead'),
@@ -76,7 +77,7 @@ example_tab = dbc.Container([
             card_no_head
         ], width=3),
     ], justify='center'),
-], fluid=True, id='example-tab')
+], fluid=True, id=TAB_ID)
 
 
 # callback go below
