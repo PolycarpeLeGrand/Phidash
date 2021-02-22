@@ -31,7 +31,7 @@ contributors_card = dbc.Card([
 # divided in rows with dbc.Row()
 # rows typically one or many cards, split by cols
 # self contained cards may be placed in a separate file and imported
-about_tab = dbc.Container([
+about_tab_layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             about_jumbotron,

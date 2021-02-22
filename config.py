@@ -1,13 +1,25 @@
 from pathlib import Path
+from dotenv import load_dotenv
+from os import environ
 
 
-# Data paths
-
-
-# Ip details when test server is run on public mode
+# Load project settings
+PROJECT_PATH = Path(__file__).parent
+load_dotenv(PROJECT_PATH / '.env')
+LOCAL_IP = environ.get('LOCAL_IP')
+BASE_STORAGE_PATH = Path(environ.get('LOCAL_STORAGE_PATH'))
+IS_PROD = environ.get('IS_PROD') == 'True'
 PORT = 33
-DEVICE_IP = '192.168.0.129'
 
+
+# Set paths to data files here.
+DATA_PATHS = {
+    'TEST_DATA_DF': PROJECT_PATH / 'data' / 'test_data_df.p'
+}
+
+
+# Browser tab title
+PROJECT_TITLE = 'Phidash'
 
 # Title and subtitle to display on header
 HEADER_TITLE = 'Dashboard title'
