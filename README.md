@@ -7,7 +7,6 @@ Copy template and follow setup instructions
 
 Run with wsgi.py. Prod server will probably need to point to wsgi.server instead of app.
 
-
 Setup:
 ------
 

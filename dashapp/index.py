@@ -9,6 +9,7 @@ from dashapp.header import header
 from dashapp.example.exampletab import example_tab_layout
 from dashapp.about.abouttab import about_tab_layout
 
+from config import PROJECT_TITLE
 
 # Register tabs following this format
 # {'name': 'tab-X', 'ulr': '/tabname', 'label': 'Tab Name', 'container': this_tab_layout}
@@ -20,19 +21,22 @@ TABS = [
 
 # Builds tabs from TABS. Don't touch.
 tabs = dbc.Tabs(
-    [dbc.Tab(label=tab['label'], label_style={'cursor': 'pointer'}) for tab in TABS],
-    id='tabs', active_tab='tab-0', style={'padding-left': '10px', }
+    [dbc.Tab(label=tab['label'], label_style={'cursor': 'pointer', 'padding': '10px', 'color': 'white'}, active_label_style={'color': 'black'}) for tab in TABS],
+    id='tabs', active_tab='tab-0', style={'padding-left': '10px', 'border': '0px'}, className='lead'
 )
 
 
 layout = html.Div([
     dcc.Location(id='url', refresh=False, pathname=TABS[0]['url']),
-    header,
+    # header,
     html.Div([
-        tabs,
-    ], className='pt-2 bg-dark text-light'),
-    dbc.Container([], id='tab-container', fluid=True, className='bt-2 pt-3'),
-])
+        dbc.Row([
+            dbc.Col(html.H1(PROJECT_TITLE, style={'text-align': 'center', 'padding': '5px 20px 0px 30px', 'margin': '0px'}), width='auto'),
+            dbc.Col(tabs),
+        ], no_gutters=True, ),
+    ], className='pt-2 text-light bg-dark', style={'border-bottom-style': 'solid', 'border-width': '1px'}),
+    dbc.Container([], id='tab-container', fluid=True, style={'padding-top': '3vh'}),
+], style={'font-family': 'helvetica,arial,courier,sans-serif'})
 
 
 @app.callback(
