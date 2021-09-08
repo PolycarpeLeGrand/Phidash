@@ -1,21 +1,28 @@
 import dash
-import pickle
-import dash_bootstrap_components as dbc
+from flask_caching import Cache
 
-from config import PROJECT_TITLE, IS_PROD, DATA_PATHS
-
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SIMPLEX], title=PROJECT_TITLE,
-                suppress_callback_exceptions=IS_PROD)
+from config import PROJECT_TITLE, IS_PROD, DATAFRAMES_DICT, USE_CACHE, CACHE_CONFIG, GENERATE_DF_DOC_FILE, MARKDOWNS_DICT
+from data.df_manager import DfManager
+from data.md_manager import MdManager
 
 
-# Load data
-def load_df_from_pickle(path):
-    with open(path, 'rb') as f:
-        return pickle.load(f)
+app = dash.Dash(
+    __name__,
+    title=PROJECT_TITLE,
+    suppress_callback_exceptions=IS_PROD,
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1"}
+    ],
+)
 
+if USE_CACHE:
+    cache = Cache(
+        app.server,
+        config=CACHE_CONFIG
+    )
 
-DATA = {name: load_df_from_pickle(path) for name, path in DATA_PATHS.items()}
-
-
-# DATA = [2312, 34234, 3453]  # with temp as open(): DATA = pickle.load(PATH)
+# Inits de DfManager object as specified in config
+# Dataframes can be accessed in modules by importing DM (e.g. import DM; DM.TEST_DF)
+DM = DfManager(DATAFRAMES_DICT, GENERATE_DF_DOC_FILE)
+MD = MdManager(MARKDOWNS_DICT)
 
