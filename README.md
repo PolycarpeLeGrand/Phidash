@@ -25,7 +25,7 @@ Built on Dash 2.0 and Python 3.9.7
 Should work on python 3.8  
 See `requirements.txt` for a full list of dependencies
 
-***
+---
 
 Setup
 -----
@@ -47,12 +47,13 @@ Setup
     * Set project specific data paths and settings
 
 .env example (file is simply named '.env', not 'something.env'):
+
 ```
 LOCAL_IP='192.168.0.1'
 IS_PROD=False
 ```
 
-***
+---
 
 Workflow
 --------
@@ -116,7 +117,7 @@ Most texts should be stored as markdown files.
 * Tabs should be built as modules in their own subdirectory
   * Tab components can be split into different files for more modularity
 
-***
+---
 
 Deployment
 ----------
@@ -125,7 +126,7 @@ Deployment instructions for Ubuntu with nginx and gunicorn.
 
 Coming soon..
 
-***
+---
 
 Useful tips
 -----------

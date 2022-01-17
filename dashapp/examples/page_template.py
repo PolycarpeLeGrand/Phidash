@@ -21,25 +21,6 @@ import dash_bootstrap_components as dbc
 #from dashapp import app, cache
 
 
-# Example jumbotron
-# The text layout can easily be set with dbc rows and cols
-# Typically uses H2 with classname jumbotron-title for title
-ex_jumbo = dbc.Jumbotron([
-    dbc.Row([
-        dbc.Col([
-            html.H2('Main title spanning the whole width', className='jumbotron-title')
-        ]),
-    ]),
-    dbc.Row([
-        dbc.Col([
-            html.P('Left column text', className='content-text')
-        ]),
-        dbc.Col([
-            html.P('Right column text', className='content-text')
-        ]),
-    ])
-], className='content-jumbotron', id='ex-jumbo')
-
 # Example card with tabs
 # Requires a callback to update content on click. Should have active_tab as input and CardBody-children as output.
 ex_tab_card = dbc.Card([
@@ -50,7 +31,6 @@ ex_tab_card = dbc.Card([
                 dbc.Tab(label='Tab 2', tab_id='tab-2'),
             ],
             id='ex-page-tabs',
-            card=True,
             active_tab='tab-1',
             className='card-tabs',
         ),
@@ -82,11 +62,7 @@ ex_card = dbc.Card([
 #       override the Col setting. Values: 'start', 'center', 'end'
 #   Use <justify> to set the horizontal alignment within a row. Values: 'start', 'center', 'end', 'between', 'around'
 template_page_layout = dbc.Container([
-    dbc.Row([
-       dbc.Col([
-           ex_jumbo
-       ]),
-    ]),
+
     dbc.Row([
         dbc.Col(ex_tab_card, lg=6),
         dbc.Col(ex_card, lg=4),

@@ -1,10 +1,8 @@
 import dash
 from flask_caching import Cache
 
-from config import PROJECT_TITLE, IS_PROD, DATAFRAMES_DICT, USE_CACHE, CACHE_CONFIG, GENERATE_DF_DOC_FILE, MARKDOWNS_DICT
-from data.df_manager import DfManager
-from data.md_manager import MdManager
-
+from config import PROJECT_TITLE, IS_PROD, USE_CACHE, CACHE_CONFIG, DATA
+from data.datamanager import DataManager
 
 app = dash.Dash(
     __name__,
@@ -23,6 +21,7 @@ if USE_CACHE:
 
 # Inits de DfManager object as specified in config
 # Dataframes can be accessed in modules by importing DM (e.g. import DM; DM.TEST_DF)
-DM = DfManager(DATAFRAMES_DICT, GENERATE_DF_DOC_FILE)
-MD = MdManager(MARKDOWNS_DICT)
+DM = DataManager(
+    sd_list=DATA
+)
 

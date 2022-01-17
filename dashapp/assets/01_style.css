@@ -1,5 +1,5 @@
 :root {
-    --c-primary: #af1818; /*#d9230f #af1818*/
+    --c-primary: #af1818; /*  */
     --c-primary-dark: #770c00;
     --c-primary-light: #ffcccc;
     --c-darkred-t: #770c0099;
@@ -14,14 +14,10 @@
     --c-bg-content-head: rgb(227, 227, 227); /* #00000012 */
     --c-shadow: #00000028;
 
-    --c-background: #fcfcfc;
-    --c-background-t: #fcfcfcD0;
-    --c-background-tt: #fcfcfc90;
-
     --c-navhead: var(--c-primary);
     --c-navtail: var(--c-dark);
 
-    --c-text-dark: black;
+    --c-text-dark: var(--c-black);
     --c-text-light: var(--c-light);
 
     --media-large: 48em;
@@ -42,18 +38,24 @@ body {
     padding: 1rem 0.5rem 0.5rem 0.5rem;
 }
 
-.content-text {
-    font-size: 1rem;
+.title-row {
+    padding: 0 0 2rem 0;
 }
 
-.content-card, .content-jumbotron  {
+.content-text {
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.content-card {
     background-color: var(--c-bg-content);
     border: 1px solid var(--c-darkgray);
     box-shadow: 0px 0px 1px 1px var(--c-shadow);
+    margin-bottom: 2rem;
 }
 
 .content-card-head{
-    background-color: var(--c-bg-content-head);
+    background-color: var(--c-bg-content);
     border-bottom: 1px solid var(--c-darkgray);
 }
 
@@ -79,7 +81,6 @@ body {
 
 .card-tabs .nav-link.active {
     color: var(--c-primary);
-    /* border-color: #ccc #ccc var(--c-background); */
     border-color: var(--c-darkgray) var(--c-darkgray) transparent;
     background-color: var(--c-bg-content);
 }
@@ -88,11 +89,50 @@ body {
     border-color: var(--c-darkgray) !important;
 }
 
-.content-jumbotron {
-    padding: 1rem 2rem;
+.nav-link:hover {
+    cursor: pointer;
 }
 
-.jumbotron-title {
-    margin-bottom: 1rem;
+
+/* Styling for doc markdowns */
+
+.doc-md h1 {
+    padding-bottom: 1rem;
+    font-size: 1.8rem;
 }
 
+.doc-md h2 {
+    padding: 0.5rem 0 1rem 0;
+    font-size: 1.5rem;
+}
+
+.doc-md h4 {
+    padding: 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.doc-md pre {
+    max-height: 15rem;
+    background-color: var(--c-gray);
+}
+
+.doc-md code {
+    background-color: var(--c-gray);
+}
+
+.doc-md table {
+    background-color: var(--c-gray);
+}
+
+.doc-md thead {
+    border-bottom: 1px solid black;
+}
+
+.doc-md th {
+    min-width: 2rem;
+}
+
+.doc-md tbody tr td:first-child {
+    border-right: 1px solid black;
+    padding-right: 0.5rem;
+}

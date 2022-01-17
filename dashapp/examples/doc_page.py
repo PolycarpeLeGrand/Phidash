@@ -1,17 +1,16 @@
-from dash import Dash, dcc, html, Input, Output, State, callback
+from dash import dcc, html, Input, Output, callback
 import dash_bootstrap_components as dbc
 
 # Import app and cache only if needed
 # If using DataManagers, import them from dashapp on this line as well
 # from dashapp import app, cache
-from dashapp import MD, DM
+from dashapp import DM
 
 page_name = 'doc_page'
 
 # Example jumbotron
 # The text layout can easily be set with dbc rows and cols
-# Typically uses H2 with classname jumbotron-title for title
-doc_title_jumbo = dbc.Jumbotron([
+doc_title_card = dbc.Card([
     dbc.Row([
         dbc.Col([
             html.H2('Project documentation, tutorial and examples', className='jumbotron-title')
@@ -20,29 +19,27 @@ doc_title_jumbo = dbc.Jumbotron([
     dbc.Row([
         dbc.Col([
             html.P('Project description', className='content-text'),
-            dcc.Markdown(MD.test_md)
         ], lg=4),
         dbc.Col([
             html.P('Author info etc.', className='content-text')
         ], lg=4),
     ])
-], className='content-jumbotron')
+], body=True, className='content-card')
 
 doc_card = dbc.Card([
     dbc.CardHeader([
         html.H3('Project Documentation'),
         dbc.Tabs([
             dbc.Tab(label='Readme', tab_id='tab-readme'),
-            dbc.Tab(label='Df Doc', tab_id='tab-df'),
+            dbc.Tab(label='Data Doc', tab_id='tab-df'),
         ],
             id='doc-page-doc-card-tabs',
-            card=True,
             active_tab='tab-readme',
             className='card-tabs',
         ),
     ], className='content-card-head'),
     dbc.CardBody([
-        dcc.Markdown(MD.readme, className='content-text', id='doc-page-doc-card-markdown')
+        dcc.Markdown('readme', className='content-text doc-md', id='doc-page-doc-card-markdown')
     ])
 ],  className='content-card')
 
@@ -61,7 +58,7 @@ doc_page_layout = dbc.Container([
     # Jumbotron Row, delete if not needed
     dbc.Row([
        dbc.Col([
-           doc_title_jumbo
+           doc_title_card
        ], lg=8),
     ], justify='center'),
 
@@ -79,9 +76,9 @@ doc_page_layout = dbc.Container([
 def update_doc_card_content(active_tab):
     r = 'Not found!'
     if active_tab == 'tab-readme':
-        r = MD.readme
+        r = DM.README_MD
     elif active_tab == 'tab-df':
-        r = DM.doc_md
+        r = DM.DOC_MD
     return r
 
 

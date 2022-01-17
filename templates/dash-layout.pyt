@@ -1,12 +1,12 @@
 $page_name$_layout = dbc.Container([
-    # Jumbotron Row, delete if not needed
+    # First Row, full width
     dbc.Row([
        dbc.Col([
            # jumbotron
        ]),
     ]),
 
-    # First card row, two columns
+    # Second row with 2 cards
     dbc.Row([
         dbc.Col('card-1-children', lg=6),
         dbc.Col('card-2-children', lg=4),

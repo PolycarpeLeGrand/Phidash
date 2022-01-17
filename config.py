@@ -1,6 +1,7 @@
 from pathlib import Path
 from dotenv import load_dotenv
 from os import environ
+from data.datamanager import SavedData, DType
 
 # Browser tab title
 PROJECT_TITLE = 'Phidash'
@@ -25,21 +26,24 @@ BASE_STORAGE_PATH = PROJECT_PATH / 'data'
 # Keys will be added to the DfManager object as variables <DfManager>.<key>
 # Values can be either a path to the df or a tuple consisting of the path and a string (markdown) describing the df
 GENERATE_DF_DOC_FILE = True
-DATAFRAMES_DICT = {
-    'TEST_DF': (BASE_STORAGE_PATH / 'dataframes/test_data_df.p', 'A simple test dataframe'),
-    'TEST_DF_2': BASE_STORAGE_PATH / 'dataframes/test_data_df.p'
-}
 
+# List of data objects to load in the DataManager
+# Add a SavedData object to DATA for each one
+# d_type param must be a DType
+DATA = [
+    SavedData(name='TEST_DF', path=BASE_STORAGE_PATH / 'dataframes/test_data_df.p', d_type=DType.DF, details='A simple test dataframe'),
+    SavedData(name='TEST_DF_2', path=BASE_STORAGE_PATH / 'dataframes/test_data_df.p', d_type=DType.DF),
+    SavedData(name='TEST_MD', path=BASE_STORAGE_PATH / 'markdowns/test_md.md', d_type=DType.MD, details='A simple test markdown'),
+    SavedData(name='TEST_CSV', path='', d_type=DType.CSV, details='A simple test csv'),
+    SavedData(name='', path='', details=''),
+]
 
-# Same idea, but for markdown documents. Only paths as values, no tuples with doc.
-# Temporary feature until i come up with something better
-MARKDOWNS_DICT = {
-    'test_md': BASE_STORAGE_PATH / 'markdowns/test_md.md'
-}
 
 #MD_DIRECTORIES = [
 #    BASE_STORAGE_PATH / 'markdowns',
 #]
+
+
 
 # Cache config
 # Specify if using cache, and which config to use for prod and test
